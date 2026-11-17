@@ -4,3 +4,7 @@
 4. `nvm ls`
 5. `nvm install --lts` lts stands for long term support
 6. `nvm install 22`
+
+Because we have a `.nvmrc` file, we can run `nvm use` and version will be picked from `.nvmrc`.
+
+`pwd`

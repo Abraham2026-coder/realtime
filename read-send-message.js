@@ -18,8 +18,8 @@ const userIO = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-userIO.question("text Message to be sent?", (message) => {
-    userIO.question(("from : please enter your name"), (name) => {
+userIO.question("text Message to be sent > ", (message) => {
+    userIO.question(("from : please enter your name > "), (name) => {
         const textMessage = {
             message: message,
             name: name
@@ -27,12 +27,13 @@ userIO.question("text Message to be sent?", (message) => {
         userIO.close();
         channel2.subscribe(async (status, error) => {
             if (error) {
-                process.exit(0)
+                console.log(error);
+                process.exit(0);
             }
             if (status === "SUBSCRIBED") {
                 await channel2.send({
                     type: "broadcast",
-                    event: "restart",
+                    event: "message",
                     payload: { message: textMessage.message, name: textMessage.name }
                 })
                 
